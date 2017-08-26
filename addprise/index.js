@@ -33,7 +33,7 @@ class Thumb extends PraiseButton {
 		$(this.element).find('.hand').click(function() {
 			if ( (_this.count+1) >=_this.limit ) {
 				//变为灰色
-				$(this).find(".hand-right-finger,.hand-left,.hidden,.finger1-press").css({'background':'gray','border':'none','box-shadow':'none'});
+				$(this).css('filter','grayscale(100%)');
 				$(this).unbind("click");
 			}
 			_this.addPraise();
