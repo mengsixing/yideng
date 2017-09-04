@@ -3,6 +3,7 @@ const serve = require('koa-better-serve');
 var co = require('co');
 var render = require('koa-swig');
 var router = require('koa-router')();
+var axios=require('axios');
 // The server
 let Koa = require('koa') 
 let app = new Koa()
@@ -22,8 +23,10 @@ app.context.render = co.wrap(render({
 router.get('/index/index',async function (ctx, next) {
     ctx.body=await ctx.render('index',{title:'点赞项目'});
   })
-  .get('/addpraise', function (ctx, next) {
-    ctx.body = '调用点赞接口进行点赞!'
+  .get('/addpraise',async function (ctx, next) {
+    await axios.get('http://localhost/addPraise.php?operation=insert').then(function (response) {
+      ctx.body = response.data;
+    });
   });
 
 //注册中间件

@@ -14,12 +14,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 //父类，点赞后count+1
 var PraiseButton = function () {
-	function PraiseButton(element, limit) {
+	function PraiseButton(element, limit, callback) {
 		_classCallCheck(this, PraiseButton);
 
 		this.count = 0;
 		this.element = element;
 		this.limit = limit;
+		this.callback = callback;
 		this.clickElement();
 	}
 
@@ -40,6 +41,7 @@ var PraiseButton = function () {
 				}
 				_this.addPraise();
 				_this.showAnimate();
+				_this.callback();
 			});
 		}
 	}, {
@@ -59,11 +61,12 @@ var Thumb = function (_PraiseButton) {
 
 	function Thumb(_ref) {
 		var element = _ref.element,
-		    limit = _ref.limit;
+		    limit = _ref.limit,
+		    callback = _ref.callback;
 
 		_classCallCheck(this, Thumb);
 
-		return _possibleConstructorReturn(this, (Thumb.__proto__ || Object.getPrototypeOf(Thumb)).call(this, element, limit));
+		return _possibleConstructorReturn(this, (Thumb.__proto__ || Object.getPrototypeOf(Thumb)).call(this, element, limit, callback));
 	}
 
 	return Thumb;

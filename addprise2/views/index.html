@@ -24,11 +24,13 @@
 	</style>
 	<script src="https://cdn.bootcss.com/systemjs/0.20.17/system.js"></script>
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
 	<script src="/scripts/addone.js"></script>
 {% endblock %}
 
 {% block content %}
 <div id="hand-wrapper">
+		<div>当前点赞数量：<span id="currentPraise"></span></div>
 		<div class="hand">
 			<div class="hand-left"></div>
 			<div class="hand-right">
@@ -50,17 +52,22 @@
 						return new m.default({
 							element: this,
 							limit: limit,
-							fn: function (a) {
-							    callback(a);
-							}
+							callback:callback
 						});
 					}
 				});
 				//使用插件
-				$('#hand-wrapper').initPraise(10, function (count) {
-				    //自定义点赞事件
-				    console.log(count);
+				$('#hand-wrapper').initPraise(10,function(){
+					axios.get('http://localhost/addPraise.php?operation=insert')
+					.then(function (response) {
+						$("#currentPraise").text(response.data);
+					});
 				});
+			});
+			//获取当前数据库中的点赞数
+			axios.get('http://localhost/addPraise.php?operation=select')
+			.then(function (response) {
+				$("#currentPraise").text(response.data);
 			});
 		});
 	</script>

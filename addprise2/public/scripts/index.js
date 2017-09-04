@@ -1,9 +1,10 @@
 //父类，点赞后count+1
 class PraiseButton {
-	constructor(element,limit) {
+	constructor(element,limit,callback) {
 		this.count = 0;
 		this.element=element;
 		this.limit=limit;
+		this.callback=callback;
 		this.clickElement();
 	}
 	addPraise() {
@@ -19,6 +20,7 @@ class PraiseButton {
 			}
 			_this.addPraise();
 			_this.showAnimate();
+			_this.callback();
 		});
 	}
 	showAnimate() {
@@ -26,11 +28,10 @@ class PraiseButton {
 		$(this.element).find('.hand').append(addone);
 		$(addone).addClass('animate');
 	}
-
 }
 class Thumb extends PraiseButton {
-	constructor({element,limit}) {
-		super(element,limit);
+	constructor({element,limit,callback}) {
+		super(element,limit,callback);
 	}
 }
  export default Thumb;
