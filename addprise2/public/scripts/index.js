@@ -8,11 +8,11 @@ class PraiseButton {
 		this.clickElement();
 	}
 	addPraise() {
-		this.count=addOne(this.count);
+		this.count= addOne(this.count);
 	}
 	clickElement(){
 		var _this=this;
-		$(this.element).find('.hand').click(function(){
+		var op=function(){
 			if ( (_this.count+1) >=_this.limit ) {
 				//变为灰色
 				$(this).css('filter','grayscale(100%)');
@@ -21,6 +21,10 @@ class PraiseButton {
 			_this.addPraise();
 			_this.showAnimate();
 			_this.callback();
+		}
+		$(this.element).find('.hand').click(function(){
+			//绑定节流函数
+			throttle(op);
 		});
 	}
 	showAnimate() {

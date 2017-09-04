@@ -33,7 +33,7 @@ var PraiseButton = function () {
 		key: 'clickElement',
 		value: function clickElement() {
 			var _this = this;
-			$(this.element).find('.hand').click(function () {
+			var op = function op() {
 				if (_this.count + 1 >= _this.limit) {
 					//变为灰色
 					$(this).css('filter', 'grayscale(100%)');
@@ -42,6 +42,10 @@ var PraiseButton = function () {
 				_this.addPraise();
 				_this.showAnimate();
 				_this.callback();
+			};
+			$(this.element).find('.hand').click(function () {
+				//绑定节流函数
+				throttle(op);
 			});
 		}
 	}, {
