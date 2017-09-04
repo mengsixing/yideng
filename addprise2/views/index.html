@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
 
-<head>
-	<meta charset="UTF-8">
-	<title>点赞项目</title>
-	<style type="text/css">
+{% block title %} {{title}} {%endblock%}
+
+{% block head %}
+<style type="text/css">
 		#hand-wrapper{width: 500px;height: 500px;text-align: center;background: linear-gradient(to bottom right, #9CD792 0%, #D6DED2 80%);}
 		.hand{margin-top: 200px;position: relative;font-size: 0px;display: inline-block;}
 		.hand-left{display: inline-block;width: 150px;height: 180px;background: #a6d49d;position: absolute;z-index: 1;top: 14px;border: 1px solid #A76E49;}
@@ -25,11 +24,11 @@
 	</style>
 	<script src="https://cdn.bootcss.com/systemjs/0.20.17/system.js"></script>
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" src="index.js"></script>
-</head>
+	<script src="/scripts/addone.js"></script>
+{% endblock %}
 
-<body>
-	<div id="hand-wrapper">
+{% block content %}
+<div id="hand-wrapper">
 		<div class="hand">
 			<div class="hand-left"></div>
 			<div class="hand-right">
@@ -44,7 +43,7 @@
 	</div>
 	<script>
 		$(function () {
-		    SystemJS.import('./scripts/index-compiled.js').then(function (m) {
+		    SystemJS.import('/scripts/index-compiled.js').then(function (m) {
 				//绑定插件
 				jQuery.fn.extend({
 					initPraise: function (limit,callback) {
@@ -65,6 +64,4 @@
 			});
 		});
 	</script>
-</body>
-
-</html>
+{% endblock %}

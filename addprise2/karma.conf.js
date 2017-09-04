@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: 'test/',
 
 
     // frameworks to use
@@ -22,7 +22,9 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       "karma.conf.js",
-      "e2e.js"
+      "e2e.js",
+      "app.js",
+      "router.js"
     ],
 
 
