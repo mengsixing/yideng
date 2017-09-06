@@ -87,3 +87,6 @@ function throttle(fn) {
         click();
     });
 }
+function mm() {
+    return 1;
+}
