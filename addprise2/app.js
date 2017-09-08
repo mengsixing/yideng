@@ -2,15 +2,13 @@
 const serve = require('koa-better-serve');
 var co = require('co');
 var render = require('koa-swig');
-var router = require('koa-router')();
-var axios=require('axios');
 // The server
 let Koa = require('koa') 
 let app = new Koa()
+//controller
+var router=require('./controller/base.js');
 
-
-
-
+//包裹中间件
 app.context.render = co.wrap(render({
   root: __dirname+'/views',
   autoescape: true,
@@ -19,20 +17,14 @@ app.context.render = co.wrap(render({
   writeBody: false
 }));
 
+//注册路由
+router.init(app);
 
-router.get('/index/index',async function (ctx, next) {
-    ctx.body=await ctx.render('index',{title:'点赞项目'});
-  })
-  .get('/addpraise',async function (ctx, next) {
-    await axios.get('http://localhost/addPraise.php?operation=insert').then(function (response) {
-      ctx.body = response.data;
-    });
-  });
+app.use(async ctx => {
+  ctx.body = '默认路由';
+});
 
-//注册中间件
-
-app.use(router.routes());
-app.use(router.allowedMethods());
+//静态资源中间件
 app.use(serve(__dirname+'/public'));
 
 //监听端口
