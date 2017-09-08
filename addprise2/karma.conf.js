@@ -22,6 +22,7 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       "karma.conf.js",
+      "function.js",
       "e2e.js",
       "app.js",
       "router.js"
