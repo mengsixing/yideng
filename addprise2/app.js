@@ -1,16 +1,18 @@
 //第三方中间件
-const serve = require('koa-better-serve');
+const server = require('koa-static');
 var co = require('co');
 var render = require('koa-swig');
+const router = require('koa-simple-router');
+const config =require('./config/config.js');
 // The server
 let Koa = require('koa') 
 let app = new Koa()
 //controller
-var router=require('./controller/base.js');
+var controller=require('./controller/initController.js');
 
 //包裹中间件
 app.context.render = co.wrap(render({
-  root: __dirname+'/views',
+  root: config.get('viewDir'),
   autoescape: true,
   cache: 'memory', // disable, set to false
   ext: 'html',
@@ -18,16 +20,12 @@ app.context.render = co.wrap(render({
 }));
 
 //注册路由
-router.init(app);
-
-app.use(async ctx => {
-  ctx.body = '默认路由';
-});
+controller.init(app,router);
 
 //静态资源中间件
-app.use(serve(__dirname+'/public'));
-
+//app.use(server(__dirname + '/public'));
+app.use(server( config.get('staticDir') ) );
 //监听端口
-app.listen(5000, () => {
-  console.log('server started on 5000')
+app.listen(config.get('port'), () => {
+  console.log('server started on '+config.get('port'))
 })

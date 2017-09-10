@@ -22,9 +22,10 @@ class PraiseButton {
 			_this.showAnimate();
 			_this.callback();
 		}
+		//绑定节流函数
+		var createThrottle=throttle(op,1000);
 		$(this.element).find('.hand').click(function(){
-			//绑定节流函数
-			throttle(op);
+			createThrottle();
 		});
 	}
 	showAnimate() {
