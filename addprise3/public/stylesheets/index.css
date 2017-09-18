@@ -9,7 +9,7 @@
 .finger5{border-bottom-left-radius: 10px;}
 .hidden{width: 100px;position: absolute;background-color: #a6d49d;left: 1px;top: 1px;bottom: 1px;z-index: 2;border-radius: 10px;}
 .hand-small{position: absolute;right: 10px;top: 0px;font-size: 36px;transition: transform 0.5s;opacity: 0;}
-.hand-small.animate{animation: praise-add 0.5s;}
+.hand-small.animate{animation: praise-add 0.5s; }
 @keyframes praise-add{
 	0%{transform: translate(0px, 0px);opacity: 0;}
 	75%{transform: translate(100px, -100px);opacity: 1;}
