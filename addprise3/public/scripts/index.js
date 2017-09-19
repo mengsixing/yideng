@@ -1,3 +1,5 @@
+import throttle from './throttle.js';
+import addOne from './addone.js';
 //父类，点赞后count+1
 class PraiseButton {
 	constructor(element,limit,callback) {
