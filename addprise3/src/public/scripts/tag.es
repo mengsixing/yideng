@@ -1,3 +1,5 @@
+require('../stylesheets/index.css');
+
 xtag.register('x-praise', {
     content: `<div class="hand">
     <div class="hand-left"></div>
