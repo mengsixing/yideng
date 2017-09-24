@@ -1,121 +1,10 @@
-webpackJsonp([0],[
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-function addOne(x) {
-	return x + 1;
-}
-
-exports.default = addOne;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-function throttle(fn, timeout) {
-	var timer;
-	return function () {
-		if (!timer) {
-			timer = setTimeout(function () {
-				timer = null;
-			}, timeout);
-
-			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-				args[_key] = arguments[_key];
-			}
-
-			return fn.apply(this, args);
-		}
-	};
-}
-
-exports.default = throttle;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(3);
-module.exports = __webpack_require__(5);
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _addone = __webpack_require__(0);
-
-var _addone2 = _interopRequireDefault(_addone);
-
-var _throttle = __webpack_require__(1);
-
-var _throttle2 = _interopRequireDefault(_throttle);
-
-var _index = __webpack_require__(4);
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//绑定插件
-jQuery.fn.extend({
-	initPraise: function initPraise(limit, callback) {
-		return new _index2.default({
-			element: this,
-			limit: limit,
-			callback: callback
-		});
-	}
-});
-//使用插件
-$('#hand-wrapper').initPraise(10, function () {
-	axios.get('/praise/add').then(function (response) {
-		if (response.data.success) {
-			var currentNum = parseInt($("#currentPraise").text());
-			$("#currentPraise").text(currentNum + 1);
-		} else {
-			console.log(response.data);
-		}
-	});
-});
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _throttle = __webpack_require__(1);
-
-var _throttle2 = _interopRequireDefault(_throttle);
-
-var _addone = __webpack_require__(0);
-
-var _addone2 = _interopRequireDefault(_addone);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -138,7 +27,7 @@ var PraiseButton = function () {
 	_createClass(PraiseButton, [{
 		key: 'addPraise',
 		value: function addPraise() {
-			this.count = (0, _addone2.default)(this.count);
+			this.count = addOne(this.count);
 		}
 	}, {
 		key: 'clickElement',
@@ -155,7 +44,7 @@ var PraiseButton = function () {
 				_this.callback();
 			};
 			//绑定节流函数
-			var createThrottle = (0, _throttle2.default)(op, 1000);
+			var createThrottle = throttle(op, 1000);
 			$(this.element).find('.hand').click(function () {
 				createThrottle();
 			});
@@ -189,12 +78,3 @@ var Thumb = function (_PraiseButton) {
 }(PraiseButton);
 
 exports.default = Thumb;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ })
-],[2]);

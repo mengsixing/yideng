@@ -8,5 +8,4 @@ function throttle(fn,timeout){
 	}
 }
 
-export default throttle;
 

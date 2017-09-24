@@ -9,7 +9,6 @@ import 'babel-register';
 import co from 'co';
 const app = new Koa();
 initController.init(app,router);
-console.log(1232);
  app.context.render = co.wrap(render({
    root: config.get('viewDir'),
   autoescape: true,
