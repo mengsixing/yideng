@@ -1,23 +1,12 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _indexController = require('./indexController');
-
-var _indexController2 = _interopRequireDefault(_indexController);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var initController = {
-	init: function init(app, router) {
-		app.use(router(function (_) {
-			_.get('/index/index', _indexController2.default.index());
-			_.get('/praise/add', _indexController2.default.addpraise());
-			_.get('/praise/select', _indexController2.default.selectpraise());
+var indexController= require('./indexController.js');
+var initController={
+	init(app,router){
+		app.use(router(_ => {
+		  _.get('/index/index',indexController.index());
+		  _.get('/praise/add',indexController.addpraise());
+		  _.get('/praise/select',indexController.selectpraise());
 		}));
 	}
 };
 
-exports.default = initController;
+module.exports=initController;

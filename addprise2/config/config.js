@@ -1,19 +1,9 @@
-'use strict';
+var path=require('path');
+const config = new Map();
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+config.set('port',5000);
+config.set('staticDir',path.join(__dirname,'../','public'));
+config.set('viewDir',path.join(__dirname,'../','views'));
 
-var _path = require('path');
 
-var _path2 = _interopRequireDefault(_path);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var config = new Map();
-
-config.set('port', 5000);
-config.set('staticDir', _path2.default.join(__dirname, '../', 'public'));
-config.set('viewDir', _path2.default.join(__dirname, '../', 'views'));
-
-exports.default = config;
+module.exports=config;
