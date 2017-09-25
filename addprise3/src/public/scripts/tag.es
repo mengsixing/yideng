@@ -11,6 +11,13 @@ xtag.register('x-praise', {
         <div class="hand-right-finger finger5"></div>
         <div class="hidden"></div>
     </div>
-</div>`
+</div>`,
+ events: {
+    tap: function(){
+      axios.get('/praise/select').then(function(response) {
+        $("#currentPraise").text(response.data);
+    });
+    }
+  }
 });
 

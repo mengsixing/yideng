@@ -1,10 +1,10 @@
-console.log('come in');
 module.exports = function(templateParams, cssList) {
-     console.log('入口文件', templateParams.htmlWebpackPlugin.files);
+     //console.log('入口文件', templateParams.htmlWebpackPlugin.files);
     var _files = templateParams.htmlWebpackPlugin.files;
-     console.log('文件', _files);
+    // console.log('文件', _files);
     var _regChunk = templateParams.htmlWebpackPlugin.options.chunks;
     var _regCss = cssList;
+    console.log('cssList',cssList);
     var _scripts = "";
     var _styles = "";
     for (var i = 0; i < _regChunk.length; i++) {
@@ -22,6 +22,7 @@ module.exports = function(templateParams, cssList) {
             }
         });
     }
+    console.log('最后的css',_styles);
     return {
         scripts: _scripts,
         styles: _styles

@@ -1,3 +1,4 @@
+import css from  '../stylesheets/index.css'
 //父类，点赞后count+1
 class PraiseButton {
 	constructor(element,limit,callback) {
