@@ -1,6 +1,8 @@
 一灯学堂课后作业
 --------
 
+[![Build Status](https://www.travis-ci.org/yhlben/yideng.svg?branch=master)](https://www.travis-ci.org/yhlben/yideng)
+
 项目目录：
 
  1. 点赞项目静态效果
