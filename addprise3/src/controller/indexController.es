@@ -10,9 +10,9 @@ var indexController={
 	},
 	addpraise(){
 		return async(ctx, next) => {
-			//const data = await  praiseModel.addpraise();
-			//console.log(data);
-			ctx.body = 'data';
+			const data = await  praiseModel.addpraise();
+			console.log(data);
+			ctx.body = data;
 		  }
 	},
 	selectpraise(){

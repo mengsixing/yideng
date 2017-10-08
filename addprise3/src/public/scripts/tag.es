@@ -1,4 +1,15 @@
 require('../stylesheets/index.css');
+var throttle= require('./throttle.js').default;
+var sss= throttle(function(){
+          axios.get('/praise/add').then(function(response) {
+        var number= parseInt( $("#currentPraise").text());
+        $("#currentPraise").text(number+1);
+        $('.hand-small').addClass('animate');
+      setTimeout(function(){
+        $('.hand-small').removeClass('animate');
+       },1001)
+    });
+    },1000);
 
 xtag.register('x-praise', {
     content: `<div class="hand">
@@ -11,12 +22,12 @@ xtag.register('x-praise', {
         <div class="hand-right-finger finger5"></div>
         <div class="hidden"></div>
     </div>
+    <div class="hand-small">+1</div>
 </div>`,
  events: {
-    tap: function(){
-      axios.get('/praise/select').then(function(response) {
-        $("#currentPraise").text(response.data);
-    });
+    click: function(){
+    
+    sss();
     }
   }
 });
