@@ -6,6 +6,7 @@
     <title>{% block title %}My Site{% endblock %}</title>
     <link rel="dns-prefetch" href="http://cdn.bootcss.com/"> {% block head %}
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
     <script src="http://cdn.bootcss.com/axios/0.15.3/axios.js"></script>
     <script src="https://cdn.bootcss.com/x-tag/1.5.11/x-tag-core.js"></script>
     {% endblock %} {% block styles %} {% endblock %}
@@ -22,7 +23,10 @@ $(function() {
         .then(function(response) {
             $("#currentPraise").text(response.data);
         });
-    $(document).pjax('a', '#pjax-container')
+        setTimeout(function(){
+            $(document).pjax('a', '#pjax-container');
+            console.log('绑定pjax成功');
+        },2000);
 });
 </script>
 

@@ -13,6 +13,7 @@ var indexController={
 	},
 	star(){
 		return async(ctx, next) => {
+				console.log(ctx.request);
 		    ctx.body=await ctx.render('star',{title:'星星'});
 		  }
 	},

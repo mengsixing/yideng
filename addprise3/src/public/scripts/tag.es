@@ -46,16 +46,16 @@ xtag.register('x-praise', {
 });
 
 xtag.register('x-star', {
-    content: `<div class="star">
+    content: `<div class="hand">
     <div class="star-content">
-        当我是一个星星组件
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507563932375&di=9bc75e76d14bc57ca6a9349dfbb7b2ec&imgtype=0&src=http%3A%2F%2Fmail.qlv77.com%2Fuploads%2Fcontent%2F2012%2F20121217142646_78218678_thum.png" />
     </div>
     
-    <div class="star-small">+1</div>
+    <div class="hand-small">+1</div>
 </div>`,
  events: {
     click: function(){
-    muzhiZan();
+    starZan();
     }
   }
 });
