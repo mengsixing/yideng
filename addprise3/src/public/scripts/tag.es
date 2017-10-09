@@ -1,6 +1,6 @@
 require('../stylesheets/index.css');
 var throttle= require('./throttle.js').default;
-var sss= throttle(function(){
+var thumbZan= throttle(function(){
           axios.get('/praise/add').then(function(response) {
         var number= parseInt( $("#currentPraise").text());
         $("#currentPraise").text(number+1);
@@ -10,6 +10,20 @@ var sss= throttle(function(){
        },1001)
     });
     },1000);
+
+
+var starZan= throttle(function(){
+          axios.get('/praise/add').then(function(response) {
+        var number= parseInt( $("#currentPraise").text());
+        $("#currentPraise").text(number+1);
+        $('.hand-small').addClass('animate');
+      setTimeout(function(){
+        $('.hand-small').removeClass('animate');
+       },1001)
+    });
+    },1000);
+
+
 
 xtag.register('x-praise', {
     content: `<div class="hand">
@@ -26,8 +40,22 @@ xtag.register('x-praise', {
 </div>`,
  events: {
     click: function(){
+    thumbZan();
+    }
+  }
+});
+
+xtag.register('x-star', {
+    content: `<div class="star">
+    <div class="star-content">
+        当我是一个星星组件
+    </div>
     
-    sss();
+    <div class="star-small">+1</div>
+</div>`,
+ events: {
+    click: function(){
+    muzhiZan();
     }
   }
 });

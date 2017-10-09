@@ -61,6 +61,16 @@ module.exports = {
             filename: './wiget/index.html',
             template: 'src/wiget/index.html',
             inject: false
+        }),
+        new HtmlWebpackPlugin({ // Also generate a test.html
+            filename: './views/star.html',
+            template: 'src/wiget/star.html',
+            inject: false
+        }),
+        new HtmlWebpackPlugin({ // Also generate a test.html
+            filename: './views/thumb.html',
+            template: 'src/wiget/thumb.html',
+            inject: false
         })
     ]
 }

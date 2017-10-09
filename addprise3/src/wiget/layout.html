@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}My Site{% endblock %}</title>
-    {% block head %}
+    <link rel="dns-prefetch" href="http://cdn.bootcss.com/"> {% block head %}
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
     <script src="http://cdn.bootcss.com/axios/0.15.3/axios.js"></script>
     <script src="https://cdn.bootcss.com/x-tag/1.5.11/x-tag-core.js"></script>
@@ -16,11 +16,14 @@
 </body>
 {% block script%}{% endblock%}
 <script type="text/javascript">
-//获取当前数据库中的点赞数
-axios.get('/praise/select')
-    .then(function(response) {
-        $("#currentPraise").text(response.data);
-    });
+$(function() {
+    //获取当前数据库中的点赞数
+    axios.get('/praise/select')
+        .then(function(response) {
+            $("#currentPraise").text(response.data);
+        });
+    $(document).pjax('a', '#pjax-container')
+});
 </script>
 
 </html>
