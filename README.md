@@ -1,4 +1,4 @@
-一灯学堂课后作业
+study record
 --------
 
 [![Build Status](https://www.travis-ci.org/yhlben/yideng.svg?branch=master)](https://www.travis-ci.org/yhlben/yideng)
