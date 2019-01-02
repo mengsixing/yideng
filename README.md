@@ -1,7 +1,7 @@
 study record
 --------
 
-[![Build Status](https://www.travis-ci.org/yhlben/yideng.svg?branch=master)](https://www.travis-ci.org/yhlben/yideng)
+[![Build Status](https://www.travis-ci.org/yhlben/yideng.svg?branch=master)](https://www.travis-ci.org/yhlben/yideng) [![Greenkeeper badge](https://badges.greenkeeper.io/yhlben/yideng.svg)](https://greenkeeper.io/)
 
 项目目录：
 
