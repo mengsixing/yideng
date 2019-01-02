@@ -1,0 +1,12 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "addprise/package.json",
+        "addprise2/package.json",
+        "addprise3/package.json",
+        "package.json"
+      ]
+    }
+  }
+}
